@@ -1,6 +1,13 @@
-from app import db
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-class Task(db.Model):
+db = SQLAlchemy(app)
+
+
+class Tasks(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     tittle = db.Column(db.String(100), nullable = False)
     description = db.Column(db.Text, nullable = True)
@@ -12,4 +19,4 @@ class Task(db.Model):
            "tittle" : self.tittle,
            "description" : self.description,
            "completed" : self.completed
-           } 
+           }

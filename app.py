@@ -21,7 +21,6 @@ class Tasks(db.Model):
            "completed" : self.completed
            } 
 
-# from app_models import Task
 
 #creating a new task
 @app.route('/task', methods = ['POST'])
